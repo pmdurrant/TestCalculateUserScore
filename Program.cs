@@ -48,7 +48,7 @@ foreach (Person item in persons)
 
     int index = Array.IndexOf(sortedlist.ToArray(), item.PersonName.ToLower());
 
-    Int16 intscore = 1;
+    Int16 intscore = 0;
 
     foreach (var itemchr in item.PersonName)
     {
@@ -58,7 +58,12 @@ foreach (Person item in persons)
 
 
     // store values to properties
-    newp.Score = intscore * index;
+    if (index != 0)
+    {
+        newp.Score = intscore * index;
+    }
+    else { newp.Score = intscore; }
+
     newp.PersonName = item.PersonName;
     newp.IndexPosition = index;
     newp.InternalCharscore = intscore;
@@ -73,7 +78,7 @@ foreach (Person item in persons)
 #region Select 2 items from list
 
 
-// Should Output "Person:COLIN InternalCharScore:54 FileIndexPositon:772 Score:41688" 
+// Should Output "Person:COLIN InternalCharScore:53 FileIndexPositon:772 Score:40916 " 
 var findSelectedItem = list.Find(c => c.PersonName == "COLIN");
 
 if (findSelectedItem != null)
@@ -85,7 +90,7 @@ if (findSelectedItem != null)
 
 
 
-// Should Output Person:ADAMN InternalCharScore:34  FileIndexPositon:17 Score:578
+// Should Output Person:ADAMN InternalCharScore:33  FileIndexPositon:17 Score:561
 findSelectedItem = list.Find(c => c.PersonName == "ADAMN");
 
 if (findSelectedItem != null)
@@ -93,8 +98,10 @@ if (findSelectedItem != null)
     string Outputdata = string.Format("Person:{0} InternalCharScore:{1}  FileIndexPositon:{3} Score:{2}", findSelectedItem.PersonName, findSelectedItem.InternalCharscore, findSelectedItem.Score, findSelectedItem.IndexPosition);
 
     Console.WriteLine(Outputdata);
-} 
+}
 #endregion
 
 
+var totalScore = list.Sum<Person>(c => c.Score);
 
+Console.WriteLine(string.Format("totalScore:{0}",totalScore));

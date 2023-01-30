@@ -70,20 +70,20 @@ namespace ConsoleApp1
         /// Calculates the score.
         /// </summary>
         /// <returns>System.Int32.</returns>
-        private int calculateScore()
-        {
-            var intscore = 0;
-            foreach (var itemchr in personName)
-            {
-                var charpos = Convert.ToInt16(itemchr - 64);
+        //private int calculateScore()
+        //{
+        //    var intscore = 0;
+        //    foreach (var itemchr in personName)
+        //    {
+        //        var charpos = Convert.ToInt16(itemchr - 64);
 
 
-                intscore += charpos;
+        //        intscore += charpos;
 
-            }
-            internalCharscore=intscore;
-            return intscore * indexPosition;
-        }
+        //    }
+        //    internalCharscore=intscore;
+        //    return intscore * indexPosition;
+        //}
 
         /// <summary>
         /// Returns a hash code for this instance.
