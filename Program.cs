@@ -100,8 +100,11 @@ if (findSelectedItem != null)
     Console.WriteLine(Outputdata);
 }
 #endregion
+#region TotalScore
 
 
 var totalScore = list.Sum<Person>(c => c.Score);
 
-Console.WriteLine(string.Format("totalScore:{0}",totalScore));
+Console.WriteLine(string.Format("totalScore:{0}", totalScore));
+
+#endregion
